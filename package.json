@@ -1,0 +1,23 @@
+{
+  "name": "note-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^20.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.4"
+  },
+  "type": "module",
+  "dependencies": {
+    "markdown-it": "^13.0.1"
+  }
+}
