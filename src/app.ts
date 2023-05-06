@@ -17,7 +17,7 @@ function getNoteUri(): string[] {
 
 	const ret: string[] = new Array(dirs.length);
 	dirs.forEach((file: string, index: number) => {
-		ret[index]	= file.substring(0, file.length - 5);
+		ret[index]	= '/zet/' + file.substring(0, file.length - 5) + ".html";
 	})
 	return ret;
 }
@@ -35,8 +35,8 @@ server.on('request', (req: http.IncomingMessage, res: http.ServerResponse) => {
 	if (req.url == '/' && req.method === 'GET') {
 		data = readFileSync(__dirname + '/index.html');
 	}
-	else if ((index = URIs.indexOf(uri.substring(1, uri.length))) > -1) {
-		data = readFileSync(__dirname + '/zet/' + URIs[index] + '.html');
+	else if ((index = URIs.indexOf(uri)) > -1) {
+		data = readFileSync(__dirname + URIs[index]);
 	}
 
 	res.writeHead(status, {
