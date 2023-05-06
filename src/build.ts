@@ -25,7 +25,8 @@ const markdown: MarkdownIt = MarkdownIt({html: true});
 			const htmlNote = markdown.render(mdNote);
 
 			template('div').append(htmlNote);
-			index('ul').append(`<li><a href="${folder}">${folder} </a></li>`);
+			const href: string = './zet/' + folder + '.html';
+			index('ul').append(`<li><a href="${href}">${folder} </a></li>`);
 
 			writeFileSync(__dirname + '/zet/' + folder + ".html", template.html());
 		}
