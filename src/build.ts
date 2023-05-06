@@ -16,13 +16,11 @@ const markdown: MarkdownIt = MarkdownIt({html: true});
 	const templateHtml: string | Buffer = readFileSync(__src + '/template.html');
 	const indexHtml: string | Buffer = readFileSync(__src + '/index.html');
 
-	const template = cheerio.load(templateHtml);
 	const index = cheerio.load(indexHtml);
-
 	dirs.forEach((folder: string) => {
+		const template = cheerio.load(templateHtml);
+		const notePath: string = __src + "/zet/" + folder + "/README.md";
 		try {
-			const notePath: string = __src + "/zet/" + folder + "/README.md";
-
 			const mdNote: string = readFileSync(notePath, 'utf8');
 			const htmlNote = markdown.render(mdNote);
 

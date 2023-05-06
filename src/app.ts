@@ -3,8 +3,8 @@ import { readFileSync, readdirSync, Dirent } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-const hostname: string = '127.0.0.1';
-const port: number = 3000;
+const HOST: string = '0.0.0.0';
+const PORT: number = 8080;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,7 +22,8 @@ function getNoteUri(): string[] {
 	return ret;
 }
 
-server.on('request', async (req: http.IncomingMessage, res: http.ServerResponse) => {
+server.on('request', (req: http.IncomingMessage, res: http.ServerResponse) => {
+
 	let data: string | Buffer = "not found"; 
 	let status: number = 404;
 
@@ -37,12 +38,13 @@ server.on('request', async (req: http.IncomingMessage, res: http.ServerResponse)
 	else if ((index = URIs.indexOf(uri.substring(1, uri.length))) > -1) {
 		data = readFileSync(__dirname + '/zet/' + URIs[index] + '.html');
 	}
+
 	res.writeHead(status, {
 		'Content-Type': 'text/html',
 	})
 	return res.end(data);
 })
 
-server.listen(port, hostname, () => {
-	console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(PORT, HOST, () => {
+	console.log(`Server running at http://${HOST}:${PORT}/`);
 })
