@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"setup:build": "mkdir -p dist/zet",
+		"compile:build": "tsc",
+		"start:build": "node ./dist/build.js",
+		"build": "npm run setup:build && npm run compile:build && npm run start:build",
+		"start": "node ./dist/app.js"
   },
   "keywords": [],
   "author": "",
