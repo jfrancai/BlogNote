@@ -3,7 +3,12 @@
 		"module": "NodeNext",
 		"outDir": "dist",
 		"target": "ESNext",
-		"strict": true
+		"strict": true,
+		"paths": {
+			"cheerio": [
+				"./node_modules/cheerio/lib/index.d.ts"
+			]
+		}
 	},
 	"files": [
 		"src/app.ts"
