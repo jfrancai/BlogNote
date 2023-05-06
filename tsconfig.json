@@ -11,6 +11,7 @@
 		}
 	},
 	"files": [
-		"src/app.ts"
+		"src/app.ts",
+		"src/build.ts"
 	]
 }
